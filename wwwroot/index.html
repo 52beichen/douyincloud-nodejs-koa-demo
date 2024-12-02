@@ -1,2 +1,276 @@
-<script src="./index.js"></script>
-<h1>欢迎使用抖音云托管服务！</h1>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta name="wechat-enable-text-zoom-em" content="true">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8" name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script src="https://push.baidu.com/static/js/libs/jquery-2.0.3.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            overflow: hidden;
+        }
+        .ssl_tips_container {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        .ssl_tips {
+            display: flex;
+            align-items: center;
+        }
+        .ssl_logo {
+            width: 20px;
+            margin-right: 3px;
+        }
+        .ssl_logo img {
+            width: 16px;
+            height: 16px;
+            margin: 2px 2px;
+        }
+        .ssl_text {
+            flex: 1;
+            font-size: 14px;
+            color: #999;
+        }
+        .jump_gif {
+            width: 50%;
+            margin: 50px auto 0;
+        }
+        .jump_gif img {
+            width: 100%;
+        }
+        .jump_text {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-top: 80px;
+        }
+        .jump_button_tips {
+            text-align: center;
+            color: #ccc;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        .jump_button {
+            width: 45%;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            color: #fff;
+            background: rgb(6, 201, 100);
+            border-radius: 10px;
+            margin: 20px auto 0;
+            font-size: 16px;
+        }
+        .a-jump {
+            text-decoration: none;
+            -webkit-tap-highlight-color:rgba(255,0,0,0);
+        }
+        .powerby {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            color: #ccc;
+            font-size: 13px;
+            text-align: center;
+        }
+        .error {
+            width: 80%;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin: 50px auto 0;
+        }
+        .bg {
+            width: 100%;
+        }
+
+        .bg img {
+            width: 100%;
+        }
+
+        .btu a {
+            display: inline-block;
+            /* 设置为块级元素，以便设置宽度和高度 */
+            padding: 5px 20px;
+            /* 设置内边距，增加点击区域 */
+            text-decoration: none;
+            /* 去掉下划线 */
+            background-color: #ccc;
+            /* 设置背景颜色 */
+            color: #000;
+            /* 设置文本颜色 */
+            border: none;
+            /* 去掉边框 */
+            width: 100px;
+            /* 设置按钮宽度 */
+            height: 30px;
+            /* 设置按钮高度 */
+            text-align: center;
+            /* 文本居中 */
+            line-height: 30px;
+            /* 行高等于按钮高度，使文本垂直居中 */
+            border-radius: 30px;
+            margin-top: 20px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="oldbox" style="display: none;">
+        <div style="position:fixed;top: 10px;width: 100%;display: flex;align-items: center;justify-content: center;">
+            <img id="imageing"
+                src="data:image/png;base64,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"
+                alt="" style="width:20px;height:20px;">
+            <span style="color:rgb(144,147,153)">
+                该链接经过<span style="color:#67C23A;">SSL安全加密</span>,请放心点击
+            </span>
+        </div>
+        <div class="jump_gif"><img src="https://saas.11811.cn/zndl/jumpwx.gif" /></div>
+        <div class="jump_text">正在跳转至微信...</div>
+        <div class="jump_button_tips">如没有自动跳转请点击按钮跳转</div>
+        
+        <div class="jump_button" id="open">
+            点击跳转
+        </div>
+        <!--<div style="text-align: center;font-size: 15px;margin-top: 10px;color: gray;">无法打开时,使用默认浏览器打开。-->
+        <!--    <span id="copy" style="color: rgb(41, 86, 202);cursor: pointer;">复制链接</span>-->
+        <!--</div>-->
+    </div>
+    <div id="newbox" style="display: none;">
+
+    </div>
+    <div id="app"></div>
+
+    <script>
+        // var vConsole = new VConsole();
+        var currentURL = window.location.href;
+        var url = new URL(currentURL);
+        const copySpan = document.getElementById("copy");
+        const openSpan = document.getElementById("open");
+        const oldbox = document.getElementById("oldbox");
+        const newbox = document.getElementById("newbox");
+        var link = ""
+        var lastSixChars = url.searchParams.get("vid");
+        var is_tem = 0
+        var tem_img = ""
+        var urlprefix = 'https://saas.11811.cn';
+        var script = document.createElement('script');
+        script.src = urlprefix + '/zndl/jquery.min.js';
+        document.head.appendChild(script);
+        var img = urlprefix + "/zndl/safe.png"
+        const imageing = document.getElementById("imageing");
+        imageing.src = img
+        var ajax_url = urlprefix + "/zndl/api/Redirect/GetCardInfo?code=" + lastSixChars;
+        if (lastSixChars) {
+            $.ajax({
+                url: ajax_url,
+                dataType: "jsonp",
+                jsonpCallback: "handleJSONPResponse",
+                success: function (res) {
+                    if (res.is_tem == 0 || res.is_tem == null) {
+                        oldbox.style.display = "block"
+                    } else {
+                        newbox.style.display = "block"
+                        var newImg = document.createElement("img");
+                        newImg.id = "newimg";
+                        newImg.src = res.tem_img;
+                        newImg.style.width = "100%"
+                        var newBox = document.getElementById("newbox");
+                        newBox.appendChild(newImg);
+                    }
+                    if (res.code == 200) {
+                        if (res.title == '外链过期' && res.plain_url == '') {
+                            alert("外链链接已过期！");
+                            return false
+                        }
+                        const jw_title = res.title;
+                        const jw_icon = res.img;
+                        $("title").text(jw_title);
+                        var metaDescription = document.querySelector('meta[name="description"]');
+                        metaDescription.setAttribute('content', res.content);
+                        var shortcutIconLink = $("<link>");
+                        shortcutIconLink.attr("rel", "shortcut icon");
+                        shortcutIconLink.attr("href", jw_icon);
+                        $("head").append(shortcutIconLink);
+                        var url = res.plain_url;
+                        link = url
+                        $('#app').html(
+                            '<a href="' + url + '" id="" >' +
+                            '   ' +
+                            '</a>' +
+                            '<iframe src="' + url + '" style="display:none;"></iframe>'
+                        );
+                    } else if (res.code == 201) {
+                        const jw_title = res.title;
+                        const jw_icon = res.img;
+                        $("title").text(jw_title);
+                        var metaDescription = document.querySelector('meta[name="description"]');
+                        metaDescription.setAttribute('content', res.content);
+                        var shortcutIconLink = $("<link>");
+                        shortcutIconLink.attr("rel", "shortcut icon");
+                        shortcutIconLink.attr("href", jw_icon);
+                        $("head").append(shortcutIconLink);
+                        var url = res.plain_url;
+                        link = url;
+                        $('#app').html(
+                            '<a href="' + url + '" id="" >' +
+                            '   ' +
+                            '</a>' +
+                            '<iframe src="' + url + '" style="display:none;"></iframe>'
+                        );
+                    } else if (res.code == 0) {
+                        alert(res.title);
+                    }
+
+                },
+            });
+        } else {
+            alert("卡片链接错误！");
+        }
+        newbox.addEventListener("click", function () {
+            window.location.href = link
+        });
+        openSpan.addEventListener("click", function () {
+            window.location.href = link
+        });
+        copySpan.addEventListener("click", function () {
+            var noturl = window.location.href;
+            const parts = noturl.split("&", 2);
+            const result = parts[0];
+            const part2 = parts[1];
+            const textarea = document.createElement("textarea");
+            textarea.value = result;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("复制成功！");
+        });
+            // } else {  
+            //     alert('请在抖音中打开')  
+            // }
+    </script>
+</body>
+
+</html>
